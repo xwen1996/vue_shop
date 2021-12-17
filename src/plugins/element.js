@@ -1,12 +1,10 @@
 import Vue from 'vue'
-// eslint-disable-next-line import/no-duplicates
-import { Button } from 'element-ui'
-// eslint-disable-next-line import/no-duplicates
-import { Form, FormItem } from 'element-ui'
-// eslint-disable-next-line import/no-duplicates
-import { Input } from 'element-ui'
-// eslint-disable-next-line import/no-duplicates
-import { Message } from 'element-ui'
+// import { Button } from 'element-ui'
+// import { Form, FormItem } from 'element-ui'
+// import { Input } from 'element-ui'
+// import { Message } from 'element-ui'
+
+import { Button, Form, FormItem, Input, Message } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)

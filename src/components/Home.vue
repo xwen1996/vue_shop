@@ -1,12 +1,18 @@
 <template>
     <div>
-         <el-button type="info" round>信息按钮</el-button>
+         <el-button type="info" @click="logout" round>退出</el-button>
     </div>
 </template>
 
 <script>
 export default {
-
+  methods: {
+    // 退出功能
+    logout() {
+      window.sessionStorage.clear()
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 
