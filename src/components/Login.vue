@@ -51,11 +51,11 @@ export default {
   },
   methods: {
     // 点击重置按钮，重置登录表单
-    restLoginForm() {
+    restLoginForm () {
       this.$refs.loginFormRef.resetFields()
     },
     // 点击登录按钮，进行登录校验
-    login() {
+    login () {
       this.$refs.loginFormRef.validate(valid => {
         if (!valid) return
         this.$message.success('登录成功')
