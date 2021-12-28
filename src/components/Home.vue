@@ -84,7 +84,9 @@ export default {
   methods: {
     // 退出功能
     logout () {
+      // 清空token
       window.sessionStorage.clear()
+      // 路由跳转到登录页
       this.$router.push('/login')
     },
     // 折叠侧边栏切换
@@ -100,7 +102,7 @@ export default {
     // 获取所有左侧菜单数据，保存在menulist数组中
     // async getMenuList () {
     //   const { data: res } = await this.$http.get('menus')
-    //   if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+    //   if (res.code !== 200) return this.$message.error(res.msg)
     //   this.menulist = res.data
     //   console.log(res)
     // }

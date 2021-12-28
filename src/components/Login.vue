@@ -56,16 +56,14 @@ export default {
     },
     // 点击登录按钮，进行登录校验
     login () {
-      this.$refs.loginFormRef.validate(valid => {
+      this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return
-        this.$message.success('登录成功')
-        // // post 请求
-        // const { data: res } = await this.$http.post('login', this.loginForm)
-        // if (res.meta.status !== 200) return this.$message.console.error('登录失败！')
-        // this.$message.success('登录成功')
-        // // 将 token 保存在 sessionStorage 中
-        // window.sessionStorage.setItem('token', res.data.token)
-        // 通过编程式导航跳转到后台主页，路由地址是 /home
+        // 检验成功，向服务器端发起post请求
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        if (res.code !== 200) return this.$message.error(res.msg)
+        this.$message.success(res.msg)
+        // 登录成功后将token保存在sessionStorage中
+        window.sessionStorage.setItem('token', res.token)
         this.$router.push('/home')
       })
     }

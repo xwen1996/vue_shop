@@ -9,7 +9,7 @@ import './assets/css/global.css'
 // 配置 axios
 import axios from 'axios'
 // 配置请求跟路径
-axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+axios.defaults.baseURL = 'http://127.0.0.1:3000/api/'
 // 配置 axios 请求拦截器
 axios.interceptors.request.use(config => {
   // 为请求头对象，添加 token 验证的 Authorization 字段
