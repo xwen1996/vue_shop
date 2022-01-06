@@ -3,16 +3,16 @@
         <!-- 面包屑导航区 -->
         <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-            <el-breadcrumb-item>库存信息</el-breadcrumb-item>
+            <el-breadcrumb-item>供应商管理</el-breadcrumb-item>
+            <el-breadcrumb-item>供应商信息</el-breadcrumb-item>
         </el-breadcrumb>
         <!-- 卡片视图区 -->
         <el-card>
             <!-- 搜索区 -->
             <el-row :gutter="20">
                 <el-col :span="8">
-                   <el-input placeholder="请输入商品名称" v-model="queryInfo.query" clearable @clear="getInventory" @keyup.enter.native="getInventory">
-                        <el-button slot="append" icon="el-icon-search" @click="getInventory"></el-button>
+                   <el-input placeholder="请输入供应商名称" v-model="queryInfo.query" clearable @clear="getProffer" @keyup.enter.native="getProffer">
+                        <el-button slot="append" icon="el-icon-search" @click="getProffer"></el-button>
                     </el-input>
                 </el-col>
                 <!-- <el-col :span="6">
@@ -20,17 +20,12 @@
                 </el-col> -->
             </el-row>
             <!-- 表格区 -->
-            <el-table :data="inventoryList" style="width: 100%" border=true stripe>
-                <el-table-column prop="ProductID" label="商品ID" width="90"></el-table-column>
-                <el-table-column prop="ProductName" label="商品名称" width="180"></el-table-column>
-                <el-table-column prop="Brand" label="品牌"></el-table-column>
-                <el-table-column prop="Class" label="类别"></el-table-column>
-                <el-table-column prop="Specification" label="规格" width="150"></el-table-column>
-                <el-table-column prop="ShelfLife" label="保质期"></el-table-column>
-                <el-table-column prop="ExpiryDate" label="过期日期" width="220"></el-table-column>
-                <el-table-column prop="PurchasingPrice" label="进价" width="90"></el-table-column>
-                <el-table-column prop="SellingPrice" label="售价" width="90"></el-table-column>
-                <el-table-column prop="Inventory" label="库存" width="90"></el-table-column>
+            <el-table :data="profferList" style="width: 100%" border=true stripe>
+                <el-table-column prop="ProfferID" label="供应商ID" width="120"></el-table-column>
+                <el-table-column prop="ProfferName" label="供应商名称" width="120"></el-table-column>
+                <el-table-column prop="Address" label="地址" width="200"></el-table-column>
+                <el-table-column prop="Attn" label="联系人" width="120"></el-table-column>
+                <el-table-column prop="AttnTel" label="联系人电话" width="200"></el-table-column>
             </el-table>
             <!-- 分页区 -->
             <el-pagination
@@ -57,22 +52,22 @@ export default {
         // 每页显示多少条数据
         pageSize: 8
       },
-      inventoryList: [],
+      profferList: [],
       total: 0
     }
   },
   created () {
-    this.getInventory()
+    this.getProffer()
   },
   methods: {
-    async getInventory () {
-      const { data: res } = await this.$http.get('inventory', { params: this.queryInfo })
+    async getProffer () {
+      const { data: res } = await this.$http.get('proffer', { params: this.queryInfo })
       if (res.code !== 200) return this.$message.error('获取数据失败')
       if (res.query.length >= 1) {
-        this.inventoryList = res.query
+        this.profferList = res.query
         this.total = res.total1
       } else {
-        this.inventoryList = res.data
+        this.profferList = res.data
         this.total = res.total
       }
       console.log(res)
@@ -80,12 +75,12 @@ export default {
     // 监听 pageSize 改变的事件
     handleSizeChange (newSize) {
       this.queryInfo.pageSize = newSize
-      this.getInventory()
+      this.getProffer()
     },
     // 监听 页码值 改变的事件
     handleCurrentChange (newPage) {
       this.queryInfo.pageIndex = newPage
-      this.getInventory()
+      this.getProffer()
     }
   }
 }

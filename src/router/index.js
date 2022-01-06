@@ -6,6 +6,11 @@ import Welcome from '../components/Welcome.vue'
 import Inventory from '../components/commodity/Inventory.vue'
 import Ininventory from '../components/commodity/Ininventory.vue'
 import Outinventory from '../components/commodity/Outinventory.vue'
+import Finance from '../components/finance/Finance.vue'
+import Member from '../components/member/Member.vue'
+import Proffer from '../components/proffer/Proffer.vue'
+import Staff from '../components/staff/Staff.vue'
+import System from '../components/system/System.vue'
 
 Vue.use(Router)
 
@@ -21,7 +26,12 @@ const router = new Router({
         { path: '/welcome', component: Welcome },
         { path: '/inventory', component: Inventory },
         { path: '/ininventory', component: Ininventory },
-        { path: '/outinventory', component: Outinventory }
+        { path: '/outinventory', component: Outinventory },
+        { path: '/finance', component: Finance },
+        { path: '/member', component: Member },
+        { path: '/proffer', component: Proffer },
+        { path: '/staff', component: Staff },
+        { path: '/system', component: System }
       ]
     }
   ]

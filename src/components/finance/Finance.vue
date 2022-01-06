@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span>Welcome</span>
+        <span>财务统计</span>
     </div>
 </template>
 

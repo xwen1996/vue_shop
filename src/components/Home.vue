@@ -52,11 +52,11 @@ export default {
       // 左侧菜单数据
       menulist: [
         { id: '0', path: 'commodity', authName: '商品管理', children: [{ id: '6', path: 'inventory', authName: '库存信息' }, { id: '7', path: 'ininventory', authName: '商品入库' }, { id: '8', path: 'outinventory', authName: '出库记录' }] },
-        { id: '1', path: 'caiwutongji', authName: '财务统计', children: [{ id: '9', path: 'caiwu', authName: '财务统计' }] },
-        { id: '2', path: 'huiyuanguanli', authName: '会员管理', children: [{ id: '10', path: 'huiyuan', authName: '会员管理' }] },
-        { id: '3', path: 'gongyingshangguanli', authName: '供应商管理', children: [{ id: '11', path: 'gongyingshang', authName: '供应商管理' }] },
-        { id: '4', path: 'yuangongguanli', authName: '员工信息', children: [{ id: '12', path: 'yuangong', authName: '员工信息' }] },
-        { id: '5', path: 'xitongshezhi', authName: '系统设置', children: [{ id: '13', path: 'xitong', authName: '系统设置' }] }
+        { id: '1', path: 'caiwutongji', authName: '财务统计', children: [{ id: '9', path: 'finance', authName: '财务统计' }] },
+        { id: '2', path: 'huiyuanguanli', authName: '会员管理', children: [{ id: '10', path: 'member', authName: '会员管理' }] },
+        { id: '3', path: 'gongyingshangguanli', authName: '供应商管理', children: [{ id: '11', path: 'proffer', authName: '供应商管理' }] },
+        { id: '4', path: 'yuangongguanli', authName: '员工信息', children: [{ id: '12', path: 'staff', authName: '员工信息' }] },
+        { id: '5', path: 'xitongshezhi', authName: '系统设置', children: [{ id: '13', path: 'system', authName: '系统设置' }] }
       ],
       // 一级菜单图标
       iconsObj: {

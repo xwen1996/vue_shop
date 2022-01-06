@@ -21,7 +21,9 @@ import {
   Col,
   Table,
   TableColumn,
-  Pagination
+  Pagination,
+  Upload,
+  Dialog
 } from 'element-ui'
 
 Vue.use(Button)
@@ -45,3 +47,5 @@ Vue.use(Col)
 Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Pagination)
+Vue.use(Upload)
+Vue.use(Dialog)
