@@ -55,8 +55,8 @@ export default {
         { id: '1', path: 'caiwutongji', authName: '财务统计', children: [{ id: '9', path: 'finance', authName: '财务统计' }] },
         { id: '2', path: 'huiyuanguanli', authName: '会员管理', children: [{ id: '10', path: 'member', authName: '会员管理' }] },
         { id: '3', path: 'gongyingshangguanli', authName: '供应商管理', children: [{ id: '11', path: 'proffer', authName: '供应商管理' }] },
-        { id: '4', path: 'yuangongguanli', authName: '员工信息', children: [{ id: '12', path: 'staff', authName: '员工信息' }] },
-        { id: '5', path: 'xitongshezhi', authName: '系统设置', children: [{ id: '13', path: 'system', authName: '系统设置' }] }
+        { id: '4', path: 'yuangongguanli', authName: '员工管理', children: [{ id: '12', path: 'staff', authName: '员工信息' }] },
+        { id: '5', path: 'xitongshezhi', authName: '系统管理', children: [{ id: '13', path: 'system', authName: '用户注册' }] }
       ],
       // 一级菜单图标
       iconsObj: {

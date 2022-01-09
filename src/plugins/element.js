@@ -23,7 +23,8 @@ import {
   TableColumn,
   Pagination,
   Upload,
-  Dialog
+  Dialog,
+  DatePicker
 } from 'element-ui'
 
 Vue.use(Button)
@@ -49,3 +50,4 @@ Vue.use(TableColumn)
 Vue.use(Pagination)
 Vue.use(Upload)
 Vue.use(Dialog)
+Vue.use(DatePicker)

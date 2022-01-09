@@ -17,17 +17,17 @@
                 </el-col>
             </el-row> -->
             <!-- 表格区 -->
-            <el-table :data="outinventoryList" style="width: 100%" border=true stripe>
-                <el-table-column prop="ProductID" label="商品ID" width="65"></el-table-column>
+            <el-table :data="outinventoryList" style="width: 100%" :border=true stripe>
+                <el-table-column prop="ProductID" label="商品ID" width="80"></el-table-column>
                 <el-table-column prop="ProductName" label="商品名称" width="130"></el-table-column>
-                <el-table-column prop="Brand" label="品牌" width="65"></el-table-column>
+                <el-table-column prop="Brand" label="品牌" width="80"></el-table-column>
                 <el-table-column prop="Class" label="类别" width="80"></el-table-column>
                 <el-table-column prop="Specification" label="规格" width="150"></el-table-column>
                 <el-table-column prop="ShelfLife" label="保质期"></el-table-column>
-                <el-table-column prop="ExpiryDate" label="过期日期" width="220"></el-table-column>
-                <el-table-column prop="PurchasingPrice" label="进价" width="70"></el-table-column>
-                <el-table-column prop="SellingPrice" label="售价" width="70"></el-table-column>
-                <el-table-column prop="Inventory" label="库存" width="70"></el-table-column>
+                <el-table-column prop="ExpiryDate" label="过期日期" width="150"></el-table-column>
+                <el-table-column prop="PurchasingPrice" label="进价" width="80"></el-table-column>
+                <el-table-column prop="SellingPrice" label="售价" width="80"></el-table-column>
+                <el-table-column prop="Inventory" label="库存" width="80"></el-table-column>
                 <el-table-column prop="Selling" label="出售数量" width="80"></el-table-column>
                 <el-table-column label="操作" width="144">
                     <template slot-scope="scope">
@@ -52,11 +52,14 @@
         title="出售"
         :visible.sync="sellingVisible"
         width="30%"
-        @close="sellingDialogClose"
+        @closed="sellingDialogClose"
         >
             <el-form ref="sellingFormRef" :model="sellingForm" :rules="sellingFormRules" label-width="80px">
                 <el-form-item prop="num" label="出售数量">
                     <el-input v-model="sellingForm.num"></el-input>
+                </el-form-item>
+                <el-form-item prop="PhoneNumber" label="会员号">
+                    <el-input v-model="sellingForm.PhoneNumber"></el-input>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
@@ -69,7 +72,7 @@
         title="下架"
         :visible.sync="outVisible"
         width="30%"
-        @close="outDialogClose"
+        @closed="outDialogClose"
         >
             <el-form ref="outFormRef" :model="outForm" :rules="outFormRules" label-width="80px">
                 <el-form-item prop="num" label="下架数量">
@@ -91,10 +94,16 @@ export default {
       // 控制出售对话框显示隐藏
       sellingVisible: false,
       sellingForm: {
-        num: 1
+        num: 1,
+        PhoneNumber: '18279256100'
       },
       sellingFormRules: {
-        num: [{ required: true, message: '请输入出售数量', trigger: 'blur' }]
+        num: [
+          { required: true, message: '请输入出售数量', trigger: 'blur' }
+        ],
+        PhoneNumber: [
+          { min: 11, max: 11, message: '电话号码格式错误', trigger: 'blur' }
+        ]
       },
       // 记录出售，下架按钮当前ID
       ID: '',
@@ -104,7 +113,7 @@ export default {
         num: 1
       },
       outFormRules: {
-        num: [{ required: true, message: '请输入出售数量', trigger: 'blur' }]
+        num: [{ required: true, message: '请输入下架数量', trigger: 'blur' }]
       },
       queryInfo: {
         // 查询参数
@@ -112,7 +121,7 @@ export default {
         // 当前页码
         pageIndex: 1,
         // 每页显示多少条数据
-        pageSize: 9
+        pageSize: 8
       },
       // 数据
       outinventoryList: [],
@@ -153,23 +162,23 @@ export default {
     // 监听出售对话框的关闭事件
     sellingDialogClose () {
       this.getOutInventory()
+      this.$refs.sellingFormRef.resetFields()
     },
     // 出售对话框 确定 按钮点击事件
     sellingConfirm () {
       this.sellingVisible = false
       this.$refs.sellingFormRef.validate(async (valid) => {
         if (!valid) return this.$message.error('数据校验失败')
-        const { data: res } = await this.$http.post('outinventory', { id: this.ID, selling: this.sellingForm.num })
+        const { data: res } = await this.$http.post('outinventory', { id: this.ID, selling: this.sellingForm })
         if (res.code !== 200) return this.$message.error(res.msg)
         this.$message.success(res.msg)
       })
       this.getOutInventory()
-      this.$refs.sellingFormRef.resetField()
+      this.$refs.sellingFormRef.resetFields()
     },
     // 出售对话框 取消 按钮点击事件
     sellingCancel () {
       this.sellingVisible = false
-      this.$refs.sellingFormRef.resetField()
     },
     // 下架按钮点击事件
     showOutDialog (id) {
@@ -179,6 +188,7 @@ export default {
     // 监听下架对话框的关闭事件
     outDialogClose () {
       this.getOutInventory()
+      this.$refs.outFormRef.resetFields()
     },
     // 下架对话框 确定 按钮点击事件
     outConfirm () {
@@ -190,17 +200,15 @@ export default {
         this.$message.success(res.msg)
       })
       this.getOutInventory()
-      this.$refs.outFormRef.resetField()
+      this.$refs.outFormRef.resetFields()
     },
     // 下架对话框 取消 按钮点击事件
     outCancel () {
       this.outVisible = false
-      this.$refs.outFormRef.resetField()
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-
 </style>

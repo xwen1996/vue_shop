@@ -2,11 +2,22 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
+// 引入 echarts
+import * as echarts from 'echarts'
+// 导入moment日期处理库
+import moment from 'moment'
+moment.locale('zh-cn')
+Vue.prototype.$moment = moment
+// 全局挂载 echarts
+Vue.prototype.$echarts = echarts
 // 导入字体图标
+// eslint-disable-next-line import/first
 import './assets/fonts/iconfont.css'
 // 导入全局样式表
+// eslint-disable-next-line import/first
 import './assets/css/global.css'
 // 配置 axios
+// eslint-disable-next-line import/first
 import axios from 'axios'
 // 配置请求跟路径
 axios.defaults.baseURL = 'http://127.0.0.1:3000/api/'

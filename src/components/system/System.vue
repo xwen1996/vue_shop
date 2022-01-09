@@ -4,15 +4,15 @@
         <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>系统管理</el-breadcrumb-item>
-            <el-breadcrumb-item>系统设置</el-breadcrumb-item>
+            <el-breadcrumb-item>用户注册</el-breadcrumb-item>
         </el-breadcrumb>
         <!-- 卡片视图区 -->
         <el-card>
-          <span>
-            系统用户注册
-          </span>
           <div>
               <el-form ref="registerFormRef" :model="registerForm" :rules="registerFormRules" label-width="480px">
+                  <el-form-item label="" prop="">
+                      <div class="title">系统用户注册</div>
+                  </el-form-item>
                   <el-form-item label="用户名" prop="UserName">
                       <el-input v-model="registerForm.UserName"></el-input>
                   </el-form-item>
@@ -72,6 +72,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.title {
+  margin-left: 80px;
+  font-size: 25px;
+}
 .el-input {
     width: 340px;
 }
